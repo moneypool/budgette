@@ -1,0 +1,15 @@
+$global-font-family: 'Rubik', sans-serif;
+$global-font-size: 15px !default;
+$global-emphasis-color: #2E384D !default;
+$global-primary-background: #2E5BFF !default;
+$global-link-color: #2E5BFF !default;
+$base-heading-font-weight: 300 !default;
+
+$form-background: rgba(224, 231, 255, 0.2);
+$form-border: #E0E7FF;
+$form-label-color: #B0BAC9;
+
+@import "variables-theme";
+@import "mixins-theme";
+@import "uikit-theme";
+@import "layout";

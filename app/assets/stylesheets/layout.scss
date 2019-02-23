@@ -1,0 +1,43 @@
+article,
+footer,
+header,
+main,
+nav,
+section {
+  align-items: stretch;
+  border: 0 solid #000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-container {
+  height: 100%;
+}
+
+.main-container {
+  overflow: hidden;
+  background-color: #fafbfc;
+  flex-grow: 1;
+  order: 4;
+  margin: 0 auto;
+  max-width: 935px;
+  width: 100%;
+}
+
+.header-container {
+  -webkit-box-ordinal-group: 1;
+  order: 0;
+  border-bottom: 1px solid #E4E8F0;
+}
