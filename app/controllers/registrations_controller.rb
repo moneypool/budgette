@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
       new_group_acceptance_path(group)
       clear_used_session_values
     else
-      new_user_bank_account_path
+      new_user_bank_account_path(resource)
     end
   end
 
