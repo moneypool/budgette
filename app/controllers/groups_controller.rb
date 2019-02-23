@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   def show
-    @group = Group.find(params[:id])
+    @group = Group.friendly.find(params[:id])
   end
 
   def new
@@ -8,10 +8,10 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @group = GroupForm.new(group_params)
+    @group_form = GroupForm.new(group_params)
 
-    if @group.save
-      redirect_to @group, notice: 'Group was successfully created.'
+    if @group_form.save
+      redirect_to group_invitation_path(@group_form.group), notice: 'Group was successfully created.'
     else
       render :new
     end

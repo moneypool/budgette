@@ -2,6 +2,7 @@ class GroupForm
   include ActiveModel::Model
 
   attr_accessor :name, :user
+  attr_reader :group
 
   validates :user, presence: true
   validates :name, presence: true, length: { maximum: 120 }
@@ -21,7 +22,7 @@ class GroupForm
   private
 
   def persist!
-    group = Group.create!(name: name)
-    Membership.new(group: group, user: user).save!
+    @group = Group.create!(name: name)
+    Membership.new(group: @group, user: user).save!
   end
 end

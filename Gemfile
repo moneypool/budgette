@@ -22,7 +22,7 @@ gem "title"
 gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "uglifier"
 gem "bootsnap", require: false
-
+gem 'friendly_id', '~> 5.2.4'
 
 group :development do
   gem "listen"
