@@ -1,0 +1,6 @@
+<%= form_for @goal, url: user_goals_path do |f| %>
+  <%= f.text_field :category, required: true, placeholder: 'Category' %><br />
+  <%= f.number_field :amount, required: true, placeholder: '% to save' %><br />
+
+   <%= f.submit 'Save' %>
+<% end %>
