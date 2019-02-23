@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    # @expenses = @user&.bank_account.expenses
-    # @goals = @user&.goals
+    @expenses_by_category = Expense.by_categories_for(@user)
   end
 end

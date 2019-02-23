@@ -1,1 +1,6 @@
 <h1>Hola <%= @user.email %></h1>
+
+<% @expenses_by_category.each do |category| %>
+  <h1><%= category.name %></h1>
+  <h1><%= category.total %></h1>
+<% end %>

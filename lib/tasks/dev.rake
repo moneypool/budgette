@@ -52,7 +52,7 @@ if Rails.env.development?
         ]
       )
 
-      500.times do
+      50.times do
         Expense.create(
           bank_account_id: 1,
           category: CATEGORIES.sample,
