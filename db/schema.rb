@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_02_24_021939) do
     t.float "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "transaction_number"
+    t.datetime "date_moved"
     t.index ["bank_account_id"], name: "index_expenses_on_bank_account_id"
   end
 

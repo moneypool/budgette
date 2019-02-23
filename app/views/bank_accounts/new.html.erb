@@ -1,8 +1,2 @@
 <h3>Conecta tu cuenta de banco </h3>
-
-<%= form_for @bank_account, url: user_bank_accounts_path do |f| %>
-  <%= f.text_field :name, required: true, placeholder: 'Nombre de la cuenta' %><br />
-  <%= f.number_field :account_number, required: true, placeholder: 'Número de cuenta' %><br />
-
-  <%= f.submit 'Siguiente' %>
-<% end %>
+<%= link_to "Conectar con Banregio", "https://api-sandbox.brlabsdev.com:9447/oauth/authorize?response_type=code&client_id=rpYNJ4HRSfEmbFyvUoTOs0yQkcBodfZfZTUaRZ5v&redirect_uri=#{new_api_callback_url}" %>

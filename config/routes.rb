@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     resources :acceptances, only: [:new]
     resource :invitation, only: [:show]
   end
+
+  resources :api_callbacks, only: :new
 end

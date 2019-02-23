@@ -89,6 +89,7 @@ GEM
       dotenv (= 2.7.0)
       railties (>= 3.2, < 6.1)
     erubi (1.8.0)
+    excon (0.62.0)
     execjs (2.7.0)
     ffi (1.10.0)
     formulaic (0.4.1)
@@ -255,6 +256,7 @@ DEPENDENCIES
   bundler-audit (>= 0.5.0)
   devise
   dotenv-rails
+  excon
   formulaic
   friendly_id (~> 5.2.4)
   honeybadger
