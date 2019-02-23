@@ -1,0 +1,8 @@
+<h3>Conecta tu cuenta de banco </h3>
+
+<%= form_for @bank_account, url: user_bank_accounts_path do |f| %>
+  <%= f.text_field :name, required: true, placeholder: 'Nombre de la cuenta' %><br />
+  <%= f.number_field :account_number, required: true, placeholder: 'Número de cuenta' %><br />
+
+  <%= f.submit 'Siguiente' %>
+<% end %>

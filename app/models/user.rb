@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :goals
   has_one :bank_account
+  has_many :memberships
+  has_many :groups, through: :memberships
 end

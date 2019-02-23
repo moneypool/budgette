@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_23_181744) do
+ActiveRecord::Schema.define(version: 2019_02_23_182938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,22 @@ ActiveRecord::Schema.define(version: 2019_02_23_181744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["bank_account_id"], name: "index_incomes_on_bank_account_id"
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_groups_on_code", unique: true
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,4 +82,6 @@ ActiveRecord::Schema.define(version: 2019_02_23_181744) do
   add_foreign_key "expenses", "bank_accounts"
   add_foreign_key "goals", "users"
   add_foreign_key "incomes", "bank_accounts"
+  add_foreign_key "memberships", "groups"
+  add_foreign_key "memberships", "users"
 end
