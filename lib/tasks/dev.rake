@@ -12,13 +12,13 @@ if Rails.env.development?
       10.times do |index|
         User.create(
           email: "tester#{index}@gmail.com",
-          password: '123456'
+          password: 1234567891
         )
       end
 
       BankAccount.create(
         name: 'Banco del ahorro',
-        account_number: '1012344125562',
+        account_number: 1012344125,
         user_id: 1
       )
 
