@@ -10,6 +10,10 @@ class Group < ApplicationRecord
 
   friendly_id :code
 
+  def add_user(user)
+    Membership.new(group: self, user: user).save!
+  end
+
   private
 
   def generate_code
