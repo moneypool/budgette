@@ -1,36 +1,14 @@
 # Budgette
 
-## Getting Started
+Budgette is a social budgetting mobile webapp made in 48 hours by the moneypool dev team.
+Main technologies used where rails, postgress and heroku.
 
-After you have cloned this repo, run this setup script to set up your machine
-with the necessary dependencies to run and test this app:
+## Good Buddies, Great Budgets!
 
-    % ./bin/setup
+Budgeting and saving money is not an easy process! Budgette helps you organize yourself by
+setting up your budget plans and authomatically giving you feedback on how you're doing.
 
-It assumes you have a machine equipped with Ruby, Postgres, etc. If not, set up
-your machine with [this script].
+## Don't do it Alone..
 
-[this script]: https://github.com/thoughtbot/laptop
-
-After setting up, you can run the application using [Heroku Local]:
-
-    % heroku local
-
-[Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
-
-## Guidelines
-
-Use the following guides for getting things done, programming well, and
-programming in style.
-
-* [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
-* [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
-* [Style](http://github.com/thoughtbot/guides/blob/master/style)
-
-## Deploying
-
-If you have previously run the `./bin/setup` script,
-you can deploy to staging and production with:
-
-    % ./bin/deploy staging
-    % ./bin/deploy production
+Everything is better with friends, and that applies to budgeting! Compare and compete
+with your friends to see who is the best Budgetter.
