@@ -8,6 +8,7 @@
     <%= csp_meta_tag %>
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
@@ -18,7 +19,7 @@
       <main class="main-container" id="main-content">
         <%= yield %>
       </main>
-      <%= render "layouts/header" %>
+      <%= render "layouts/header" if user_signed_in? %>
     </section>
   </body>
 </html>

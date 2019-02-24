@@ -1,2 +1,31 @@
-<h1>Invitations#show</h1>
-<p><%= new_group_acceptance_path(@group) %></p>
+<% content_for :title, "Invitar al Grupo" %>
+
+<p>Comparte este link con los que quieras</p>
+
+<%= link_to "whatsapp://send/?text=Te reto a ahorrar más que yo! Estoy usando un app para ahorrar entra aquí para conocerla. #{CGI.escape(new_group_acceptance_url(@group))}", class: "uk-card uk-card-default uk-text-emphasis" do %>
+  <%= image_tag 'whatsapp.png', size: '32', class: 'uk-margin-small-right' %> Invitar por WhatsApp
+<% end %>
+
+<%= link_to "mailto:?subject=Te reto a ahorrar más que yo!&body=Estoy manejando mis gastos con Budgette. Te invito a unirte por que podemos competir a ver quién ahorra más. #{new_group_acceptance_url(@group)}", class: "uk-card uk-card-default uk-text-emphasis" do %>
+  <%= image_tag 'email.png', size: '32', class: 'uk-margin-small-right' %> Invitar por Email
+<% end %>
+
+<%= link_to '#',
+      class: "js-clipboard uk-card uk-card-default uk-text-emphasis",
+      data: { clipboard_text: new_group_acceptance_url(@group) } do %>
+  <%= image_tag 'link.png', size: '32', class: 'uk-margin-small-right' %> Copiar Link
+<% end %>
+
+<script type="text/javascript">
+  var clipboard = new ClipboardJS('.js-clipboard');
+
+  clipboard.on('success', function(e) {
+    UIkit.notification({
+      message: 'El texto se copió correctamente',
+      status: 'success',
+      pos: 'bottom-center',
+      timeout: 4000
+    });
+    e.clearSelection();
+  });
+</script>
