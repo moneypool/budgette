@@ -1,28 +1,39 @@
-<h2>Sign up</h2>
+<div class="uk-text-center uk-margin-xlarge-top">
+  <div class="uk-margin">
+    <%= image_tag 'logo.svg' %>
+  </div>
+  <div class="uk-margin-large">
+    <h3 class="uk-heading-line uk-margin-remove">Únete gratis</h3>
+    <p class="uk-margin-remove">Gratis por siempre</p>
+  </div>
+</div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="uk-margin">
+    <%= f.label :email, class: 'uk-form-label' %>
+    <div class="uk-form-controls">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="uk-margin">
+    <%= f.label :password, class: 'uk-form-label' %>
+    <div class="uk-form-controls">
+      <%= f.password_field :password, autocomplete: "new-password", class: "uk-input" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="uk-margin">
+    <%= f.label :password_confirmation, class: 'uk-form-label' %><br />
+    <div class="uk-form-controls">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "uk-input" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="uk-margin">
+    <%= f.submit "Crear Cuenta", class: 'uk-button uk-button-primary uk-width-1-1' %>
   </div>
 <% end %>
 

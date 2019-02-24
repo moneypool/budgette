@@ -1,4 +1,6 @@
 class AcceptancesController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def new
     @group = Group.friendly.find(params[:group_id])
 

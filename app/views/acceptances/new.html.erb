@@ -1,4 +1,20 @@
-<h1>Acceptances#new</h1>
+<div class="uk-text-center uk-margin-xlarge-top">
+  <div class="uk-margin">
+    <%= image_tag 'logo.svg' %>
+  </div>
+  <div class="uk-margin-large">
+    <h3 class="uk-heading-line uk-margin-remove">
+      Ahorra como nunca
+    </h3>
+    <p class="uk-margin-remove">
+      Para unirte al grupo <br> inicia sesión o crea una cuenta.
+    </p>
+  </div>
+</div>
 
-<%= link_to "Iniciar sesión", new_user_session_path  %>
-<%= link_to "Crear cuenta", new_user_registration_path  %>
+<div class="uk-margin-small">
+  <%= link_to "Crear cuenta", new_user_registration_path, class: 'uk-button uk-width-1-1 uk-button-primary' %>
+</div>
+<div class="uk-margin-small">
+  <%= link_to "Iniciar sesión", new_user_session_path, class: 'uk-button uk-width-1-1 uk-button-default' %>
+</div>
