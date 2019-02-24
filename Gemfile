@@ -9,6 +9,7 @@ ruby "2.6.1"
 
 gem "devise"
 gem "autoprefixer-rails"
+gem "excon"
 gem "honeybadger"
 gem "pg"
 gem "puma"

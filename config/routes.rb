@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   end
 
   root to: "marketing#show"
+
+  resources :api_callbacks, only: :new
 end
