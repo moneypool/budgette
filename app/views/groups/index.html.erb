@@ -6,6 +6,7 @@
       <h3 class="uk-card-title"><%= group.name %></h3>
     <% end %>
   <% end %>
+  <%= link_to 'Crear Reto', new_group_path, class: 'uk-button uk-button-primary' %>
 <% else %>
   <div class="uk-placeholder uk-text-center uk-margin-top">
     <%= image_tag 'groups.svg', size: '100' %>
