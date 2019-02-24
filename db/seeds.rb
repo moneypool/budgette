@@ -20,7 +20,7 @@ test_user = User.create!(
 test_bank_account = BankAccount.create!(name: "Banregio", account_number: rand(10 ** 10), user: test_user)
 
 CATEGORIES.each do |category|
-  Goal.create!(category: category, amount: rand(1000..5000), user: test_user)
+  Goal.create!(category: category, amount: rand(1000..7000), user: test_user)
 end
 
 Income.create!(
