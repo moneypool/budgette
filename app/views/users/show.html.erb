@@ -5,7 +5,7 @@
   <div class="uk-margin-left">
     <div class="uk-text-lead"><%= @user.name %></div>
     <div>
-      Este mes:
+      <h6 class="uk-margin-remove-bottom">Ahorro del mes</h6>
       <span class="<%= user_over_limit?(@total_expense, @total_income) %>">
         <%= number_to_currency(@total_income - @total_expense) %>
       </span>
