@@ -20,19 +20,29 @@
   <div class="uk-margin uk-margin-left uk-margin-right">
     <% @expenses_by_category.each do |category| %>
       <div class="uk-flex uk-flex-row uk-margin-small-bottom">
-        <div class="uk-margin-small-right">
+        <div class="uk-margin-small-right" style="flex-basis: 10%;">
           <%= inline_svg category_svg(category.name), style: "min-width: 20px; max-width: 20px" %>
         </div>
         <div class="uk-flex uk-flex-middle uk-flex-auto">
-          <progress
+          <div class="progress">
+            <div
+              class="progress-bar <%= user_over_limit?(category.total, goal(category.name).amount) %>"
+              role="progressbar"
+              style="width: <%= progress_percentage(category.total, goal(category.name).amount) %>%;"
+              aria-valuenow="<%= category.total %>"
+              aria-valuemin="0"
+              aria-valuemax="<%= goal(category.name).amount %>">
+            </div>
+          </div>
+          <!-- <progress
             class="uk-progress uk-progress-danger uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom"
-            value="<%= category.total %>"
-            max="<%= goal(category.name).amount %>">
-          </progress>
+            value="<%#= category.total %>"
+            max="<%#= goal(category.name).amount %>">
+          </progress> -->
         </div>
-        <span class="<%= user_over_limit?(category.total, goal(category.name).amount) %>">
+        <div style="flex-basis: 18%;" class="uk-text-right uk-margin-small-left <%= user_over_limit?(category.total, goal(category.name).amount) %>">
           <%= progress_percentage(category.total, goal(category.name).amount) %>%
-        </span>
+        </div>
       </div>
     <% end %>
   </div>
