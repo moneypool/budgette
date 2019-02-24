@@ -28,7 +28,7 @@ class GoalsController < ApplicationController
   end
 
   def convert_percentage_to_number(user_amount)
-    user_amount.to_i * current_user.monthly_income/100
+    user_amount.to_f * current_user.monthly_income/100
   end
 
   def default_params

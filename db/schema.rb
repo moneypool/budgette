@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_23_182938) do
+ActiveRecord::Schema.define(version: 2019_02_23_235254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_02_23_182938) do
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.string "amount"
+    t.float "amount"
     t.bigint "bank_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
