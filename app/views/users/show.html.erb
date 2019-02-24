@@ -1,63 +1,77 @@
-<% content_for :title, 'Profile' %>
+<% content_for :title, 'Perfil' %>
 
-<div class="uk-card uk-card-default uk-card-body uk-margin-small-top">
-  <div class="uk-flex">
-    <div class="">
-      <%= image_tag "avatar.svg", size: '80' %>
-    </div>
-    <div class="uk-margin-left">
-      <div class="uk-text-lead"><%= @user.name %></div>
-      <!-- <div class="uk-flex">
-        <%#= inline_svg "icons/star.svg", style: "min-width: 20px; max-width: 20px; max-height: 20px" %>
-        <span class="">4.7</span>
-      </div> -->
-      <span class="uk-text-primary"><%= @user.bank_account.name %></span>
-      <p class="uk-margin-remove-top uk-margin-remove-bottom">
-        <%= @user.bank_account.account_number.to_s.first(3) %>-<%= @user.bank_account.account_number.to_s.last(7) %>
-       </p>
+<div class="uk-flex uk-margin-top">
+  <%= image_tag "avatar.svg", size: '80' %>
+  <div class="uk-margin-left">
+    <div class="uk-text-lead"><%= @user.name %></div>
+    <div>
+      <h6 class="uk-margin-remove-bottom">Ahorro del mes</h6>
+      <span class="<%= user_over_limit?(@total_expense, @total_income) %>">
+        <%= number_to_currency(@total_income - @total_expense) %>
+      </span>
     </div>
   </div>
-  <hr>
+</div>
 
+<hr>
+
+<%= link_to new_group_path, class: 'fab' do %>
+  <%= image_tag 'add.svg' %>
+<% end %>
+
+<div class="uk-card uk-card-default uk-card-body">
+  <h5 class="uk-card-title">Tu presupuesto</h5>
   <div class="uk-margin uk-margin-left uk-margin-right">
     <% @expenses_by_category.each do |category| %>
       <div class="uk-flex uk-flex-row uk-margin-small-bottom">
-        <div class="uk-margin-small-right">
+        <div class="uk-margin-small-right" style="flex-basis: 10%;">
           <%= inline_svg category_svg(category.name), style: "min-width: 20px; max-width: 20px" %>
         </div>
         <div class="uk-flex uk-flex-middle uk-flex-auto">
-          <progress
-            class="uk-progress uk-progress-danger uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom"
-            value="<%= category.total %>"
-            max="<%= goal(category.name).amount %>">
-          </progress>
+          <div class="progress">
+            <div
+              class="progress-bar <%= user_over_limit?(category.total, goal(category.name).amount) %>"
+              role="progressbar"
+              style="width: <%= progress_percentage(category.total, goal(category.name).amount) %>%;"
+              aria-valuenow="<%= category.total %>"
+              aria-valuemin="0"
+              aria-valuemax="<%= goal(category.name).amount %>">
+            </div>
+          </div>
         </div>
-        <span class="<%= user_over_limit?(category.total, goal(category.name).amount) %>">
+        <div style="flex-basis: 18%;" class="uk-text-right uk-margin-small-left <%= user_over_limit?(category.total, goal(category.name).amount) %>">
           <%= progress_percentage(category.total, goal(category.name).amount) %>%
-        </span>
+        </div>
       </div>
     <% end %>
   </div>
+</div>
 
-    <div class="uk-card uk-card-default uk-card-small">
-      <div class="uk-flex uk-flex-between uk-text-center uk-card-body">
-        <div class="">
-          <h2 class="uk-margin-remove-bottom uk-text-success">$<%= @total_income %></h2>
-          <span>Ingreso</span>
-        </div>
-        <div class="">
-          <h2 class="uk-margin-remove-bottom uk-text-danger">$<%= @total_expense %></h2>
-          <span>Gastos</span>
-        </div>
-      </div>
+<div class="uk-card uk-card-default uk-card-small">
+  <div class="uk-flex uk-flex-between uk-text-center uk-card-body">
+    <div>
+      <h3 class="uk-margin-remove-bottom uk-text-success">
+        <%= number_to_currency @total_income %>
+      </h3>
+      <span>Ingresos</span>
     </div>
+    <div>
+      <h3 class="uk-margin-remove-bottom uk-text-danger">
+        <%= number_to_currency @total_expense %>
+      </h3>
+      <span>Gastos</span>
+    </div>
+  </div>
+</div>
 
+<div class="uk-card uk-card-default uk-card-body">
+  <h3 class="uk-margin-small">Tus Movimientos</h3>
   <ul class="uk-list uk-list-divider">
     <% @transactions.first(20).each do |transaction| %>
       <li class="uk-flex uk-flex-between">
         <div class="uk-flex-auto uk-flex uk-flex-column">
           <span><%= transaction.description.first(10) %></span>
-          <span class="uk-text-small"><%= transaction.transaction_date.to_s.first(19) %></span>
+          <span class="uk-text-meta"><%= transaction.transaction_date.to_s.first(19) %></span>
         </div>
         <div class="uk-flex-auto uk-text-right <%= transaction.class.name == 'Income' ? 'uk-text-success' : 'uk-text-danger' %>">
           <%= transaction.class.name == 'Income' ? '+' : '-' %>

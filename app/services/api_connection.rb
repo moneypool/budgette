@@ -1,17 +1,16 @@
 class ApiConnection
   class_attribute :api_client_id
-  self.api_client_id = 'rpYNJ4HRSfEmbFyvUoTOs0yQkcBodfZfZTUaRZ5v'
+  self.api_client_id = 'NJzlf5PkenKdhBiI0Zdd2KTqerENVzDgKdR78d0x'
   class_attribute :api_client_secret
-  self.api_client_secret = 'a8b7UTjvLjYFaK0gCZzZYkmEZQq0AveDagaU2vmUeOoHhOLIPDP2HwCykAiNMnYMCFe7FqpKKnkiFLOzPTF1ln1up0dt8SLBIs24PaeqFYu5UuS5VMMfP26rSSwhldIg'
+  self.api_client_secret = 'eTe3gkkwe4HFjAx6im4Czua1edizwl6i7XSYzDS06pyGuZJzlcxqzbDXHlxGB0MmtTUNtRRW4UboHaUly5J7rXLQNSKZm0Vt3YUzwhhQQQbI3JKARcAiH6r3XSC1mSkS'
   class_attribute :api_redirect_uri
   self.api_redirect_uri = 'http://localhost:3000/api_callbacks/new'
   class_attribute :api_endpoint
   self.api_endpoint = 'https://api-sandbox.brlabsdev.com:9447'
 
   def initialize(code, user)
-    @auth_code = code
     @user = user
-    @auth_token = new_auth_token['access_token']
+    @auth_token =  new_auth_token(code)['access_token']
   end
 
   def retrieve_bank_account
@@ -37,38 +36,28 @@ class ApiConnection
   private
 
   def movement_list(min_date = nil, max_date = nil)
-    if min_date.nil? || max_date.nil?
-      query = {}
-    else
-      query = {'min_date' => min_date, 'max_date' => max_date}
-    end
-    get("accounts/#{@account_id}/transactions/", query)
+    get("/accounts/#{@banck_account.id}/transactions/")
   end
 
   def account_list
     query = {}
-    get('/accounts/', query)
+    get('/accounts/')
   end
 
-  def new_auth_token
-    body = URI.encode_www_form({'grant_type' => 'authorization_code', 'code' => @auth_code, 'client_id' => api_client_id, 'client_secret' => api_client_secret, 'redirect_uri' => api_redirect_uri})
+  def new_auth_token(auth_code)
+    body = "grant_type=authorization_code&code=#{auth_code}&client_id=#{api_client_id}&client_secret=#{api_client_secret}&redirect_uri=#{api_redirect_uri}"
     post('/oauth/token/', body)
   end
 
-  def auth_token_refresh
-    body = URI.encode_www_form({'grant_type' => 'refresh_token', 'client_id' => api_client_id, 'client_secret' => api_client_secret})
-    post('/oauth/token/', body)
-  end
-
-  def get(path, query)
+  def get(path)
     domain = api_endpoint + path
-    headers = {'Accept' => 'application/json', 'Authorization' => "Bearer #{@auth_token}"}
-    Excon.get(domain, :headers => headers, :query => query).body
+    headers = {'Content-Type' => 'application/json', 'Accept' => 'application/vnd.banregio-v0.0.beta1+json', 'Authorization' => "Bearer #{@auth_token}"}
+    JSON.parse(Excon.get(domain, :headers => headers).body)
   end
 
   def post(path, body)
     domain = api_endpoint + path
-    headers = {'Content-Type' => 'application/x-www-form-urlencoded', 'Accept' => 'application/json'}
-    Excon.post(domain, :body => body, :headers => headers).body
+    headers = {'Content-Type' => 'application/x-www-form-urlencoded'}
+    JSON.parse(Excon.post(domain, :body => body, :headers => headers).body)
   end
 end
