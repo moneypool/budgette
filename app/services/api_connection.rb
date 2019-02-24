@@ -4,7 +4,7 @@ class ApiConnection
   class_attribute :api_client_secret
   self.api_client_secret = 'eTe3gkkwe4HFjAx6im4Czua1edizwl6i7XSYzDS06pyGuZJzlcxqzbDXHlxGB0MmtTUNtRRW4UboHaUly5J7rXLQNSKZm0Vt3YUzwhhQQQbI3JKARcAiH6r3XSC1mSkS'
   class_attribute :api_redirect_uri
-  self.api_redirect_uri = 'https://budgette-production.herokuapp.com/api_callbacks/new'
+  self.api_redirect_uri = 'https://budgette-staging.herokuapp.com/api_callbacks/new'
   class_attribute :api_endpoint
   self.api_endpoint = 'https://api-sandbox.brlabsdev.com:9447'
 
