@@ -6,5 +6,5 @@
     Conecta tu cuenta Banregio para que todos tus gastos se reflejen
     en automático.
   </p>
-  <%= link_to "Conectar cuenta de banco", "https://api-sandbox.brlabsdev.com:9447/oauth/authorize?response_type=code&client_id=rpYNJ4HRSfEmbFyvUoTOs0yQkcBodfZfZTUaRZ5v&redirect_uri=#{new_api_callback_url}", class: 'uk-button uk-button-primary' %>
+  <%= link_to "Conectar cuenta de Banco", "https://api-sandbox.brlabsdev.com:9447/oauth/authorize?response_type=code&client_id=#{ApiConnection.api_client_id}&redirect_uri=#{new_api_callback_url}" %>
 </div>
