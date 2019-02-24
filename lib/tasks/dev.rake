@@ -11,9 +11,9 @@ if Rails.env.development?
     task prime: 'db:setup' do
       10.times do |index|
         User.create(
-          name: "Juan Perez-#{index}",
+          name: "Sofía Rodríguez-#{index}",
           email: "tester#{index}@gmail.com",
-          password: 1234567891
+          password: 123456
         )
       end
 
@@ -56,7 +56,7 @@ if Rails.env.development?
         Expense.create(
           bank_account_id: 1,
           category: CATEGORIES.sample,
-          amount: rand(10..1000)
+          amount: rand(10..500)
         )
       end
     end

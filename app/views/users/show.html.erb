@@ -1,4 +1,6 @@
-<div class="uk-card uk-card-default uk-card-body">
+<% content_for :title, 'Profile' %>
+
+<div class="uk-card uk-card-default uk-card-body uk-margin-small-top">
   <div class="uk-flex">
     <div class="">
       <%= image_tag "girl1.jpg", style: "border-radius: 50%; min-height: 80px; min-width: 80px; max-height: 80px; max-width: 80px" %>
@@ -9,86 +11,66 @@
         <%#= inline_svg "icons/star.svg", style: "min-width: 20px; max-width: 20px; max-height: 20px" %>
         <span class="">4.7</span>
       </div> -->
+      <span class="uk-text-primary"><%= @user.bank_account.name %></span>
       <p class="uk-margin-remove-top uk-margin-remove-bottom">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-        incididunt.
+        <%= @user.bank_account.account_number.to_s.first(3) %>-<%= @user.bank_account.account_number.to_s.last(7) %>
        </p>
     </div>
   </div>
   <hr>
 
   <div class="uk-margin uk-margin-left uk-margin-right">
-    <div class="uk-flex uk-flex-row uk-margin-small-bottom">
-      <div class="uk-margin-small-right">
-        <%= inline_svg "icons/home.svg", style: "min-width: 20px; max-width: 20px" %>
+    <% @expenses_by_category.each do |category| %>
+      <div class="uk-flex uk-flex-row uk-margin-small-bottom">
+        <div class="uk-margin-small-right">
+          <%= inline_svg category_svg(category.name), style: "min-width: 20px; max-width: 20px" %>
+        </div>
+        <div class="uk-flex uk-flex-middle uk-flex-auto">
+          <progress
+            class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom"
+            value="<%= category.total %>"
+            max="<%= goal(category.name).amount %>"
+          </progress>
+        </div>
+        <span><%= progress_percentage(category.total, goal(category.name).amount)%>%</span>
       </div>
-      <div class="uk-flex uk-flex-middle uk-flex-auto">
-        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom" value="50" max="100"></progress>
-      </div>
-      <span>20%</span>
-    </div>
-
-    <div class="uk-flex uk-margin-small-bottom">
-      <div class="uk-margin-small-right">
-        <%= inline_svg "icons/salad.svg", style: "min-width: 20px; max-width: 20px" %>
-      </div>
-      <div class="uk-flex uk-flex-middle uk-flex-auto">
-        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom" value="10" max="100"></progress>
-      </div>
-      <span>15%</span>
-    </div>
-
-    <div class="uk-flex uk-margin-small-bottom">
-      <div class="uk-margin-small-right">
-        <%= inline_svg "icons/travel.svg", style: "min-width: 20px; max-width: 20px" %>
-      </div>
-      <div class="uk-flex uk-flex-middle uk-flex-auto">
-        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-top uk-margin-remove-bottom" value="70" max="100"></progress>
-      </div>
-      <span>10%</span>
-    </div>
-
-    <div class="uk-flex uk-margin-small-bottom">
-      <div class="uk-margin-small-right">
-        <%= inline_svg "icons/dog.svg", style: "min-width: 20px; max-width: 20px" %>
-      </div>
-      <div class="uk-flex uk-flex-middle uk-flex-auto">
-        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-top uk-margin-remove-bottom" value="45" max="100"></progress>
-      </div>
-      <span>20%</span>
-    </div>
-
-    <div class="uk-flex">
-      <div class="uk-margin-small-right">
-        <%= inline_svg "icons/search.svg", style: "min-width: 20px; max-width: 20px" %>
-      </div>
-      <div class="uk-flex uk-flex-middle uk-flex-auto">
-        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-top uk-margin-remove-bottom" value="80" max="100"></progress>
-      </div>
-      <span>35%</span>
-    </div>
+    <% end %>
   </div>
 
-  <div class="uk-flex">
     <div class="uk-card uk-card-default uk-card-small">
-      <div class="uk-text-center uk-card-body">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. <code>.uk-text-left</code>
+      <div class="uk-flex uk-flex-between uk-text-center uk-card-body">
+        <div class="">
+          <h1 class="uk-margin-remove-bottom uk-text-success">$<%= @total_income %></h1>
+          <span>Income</span>
+        </div>
+        <div class="">
+          <h1 class="uk-margin-remove-bottom uk-text-danger">$<%= @total_expense %></h1>
+          <span>Expenses</span>
+        </div>
       </div>
     </div>
 
-    <div class="uk-card uk-card-default uk-card-small">
-      <div class="uk-text-center uk-card-body">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. <code>.uk-text-right</code>
-      </div>
-    </div>
-  </div>
-
-    <!-- <h3 class="uk-card-title">Default</h3>
-    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+  <ul class="uk-list uk-list-divider">
+      <li class="uk-flex uk-flex-between">
+        <div class="uk-flex-auto uk-flex uk-flex-column">
+          <span>Transf web/app</span>
+          <span class="uk-text-small">Jue 21 feb, 08:06 pm</span>
+        </div>
+        <div class="uk-flex-auto uk-text-right uk-text-danger">-78.44 MXN</div>
+      </li>
+      <li class="uk-flex uk-flex-between">
+        <div class="uk-flex-auto uk-flex uk-flex-column">
+          <span>Deposit</span>
+          <span class="uk-text-small">Lun 13 feb, 01:15 pm</span>
+        </div>
+        <div class="uk-flex-auto uk-text-right uk-text-success">+300.00 MXN</div>
+      </li>
+      <li class="uk-flex uk-flex-between">
+        <div class="uk-flex-auto uk-flex uk-flex-column">
+          <span>Cinépolis</span>
+          <span class="uk-text-small">Dom 03 feb, 10:30 pm</span>
+        </div>
+        <div class="uk-flex-auto uk-text-right uk-text-danger">-230.00 MXN</div>
+      </li>
+  </ul>
 </div>
-
-<ul class="uk-list uk-list-striped uk-margin-remove-top">
-    <li>List item 1</li>
-    <li>List item 2</li>
-    <li>List item 3</li>
-</ul>
