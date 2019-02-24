@@ -82,6 +82,16 @@ body {
   position: relative;
 }
 
+.main-navigation-icon {
+  flex-basis: 20%;
+  flex-direction: row;
+}
+
+.main-navigation-icon-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
 .navigation-title {
   font-size: $global-font-size;
   font-weight: 500;

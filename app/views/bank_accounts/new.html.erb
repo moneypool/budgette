@@ -1,8 +1,10 @@
-<h3>Conecta tu cuenta de banco </h3>
+<% content_for :title, "Conectar Bancos" %>
 
-<%= form_for @bank_account, url: user_bank_accounts_path do |f| %>
-  <%= f.text_field :name, required: true, placeholder: 'Nombre de la cuenta' %><br />
-  <%= f.number_field :account_number, required: true, placeholder: 'Número de cuenta' %><br />
-
-  <%= f.submit 'Siguiente' %>
-<% end %>
+<div class="uk-placeholder uk-text-center uk-margin-top">
+  <%= image_tag 'connect-bank.svg', size: '100' %>
+  <p>
+    Conecta tu cuenta Banregio para que todos tus gastos se reflejen
+    en automático.
+  </p>
+  <%= link_to "Conectar cuenta de banco", "https://api-sandbox.brlabsdev.com:9447/oauth/authorize?response_type=code&client_id=rpYNJ4HRSfEmbFyvUoTOs0yQkcBodfZfZTUaRZ5v&redirect_uri=#{new_api_callback_url}", class: 'uk-button uk-button-primary' %>
+</div>
