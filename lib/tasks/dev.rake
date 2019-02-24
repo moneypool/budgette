@@ -11,6 +11,7 @@ if Rails.env.development?
     task prime: 'db:setup' do
       10.times do |index|
         User.create(
+          name: "Juan Perez-#{index}",
           email: "tester#{index}@gmail.com",
           password: 1234567891
         )

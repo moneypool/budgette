@@ -1,6 +1,8 @@
 <% content_for :title, "Invitar al Grupo" %>
 
-<p>Comparte este link con los que quieras</p>
+<p class="uk-text-center">
+  Comparte este link con las personas con las que te quieras comparar
+</p>
 
 <%= link_to "whatsapp://send/?text=Te reto a ahorrar más que yo! Estoy usando un app para ahorrar entra aquí para conocerla. #{CGI.escape(new_group_acceptance_url(@group))}", class: "uk-card uk-card-default uk-text-emphasis" do %>
   <%= image_tag 'whatsapp.png', size: '32', class: 'uk-margin-small-right' %> Invitar por WhatsApp
@@ -15,6 +17,8 @@
       data: { clipboard_text: new_group_acceptance_url(@group) } do %>
   <%= image_tag 'link.png', size: '32', class: 'uk-margin-small-right' %> Copiar Link
 <% end %>
+
+<%= link_to 'Ir al Grupo', group_path(@group), class: "uk-button uk-button-primary" %>
 
 <script type="text/javascript">
   var clipboard = new ClipboardJS('.js-clipboard');
