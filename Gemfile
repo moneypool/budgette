@@ -23,6 +23,7 @@ gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "uglifier"
 gem "bootsnap", require: false
 gem 'friendly_id', '~> 5.2.4'
+gem 'inline_svg'
 
 group :development do
   gem "listen"

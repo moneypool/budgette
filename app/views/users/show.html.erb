@@ -1,6 +1,94 @@
-<h1>Hola <%= @user.email %></h1>
+<div class="uk-card uk-card-default uk-card-body">
+  <div class="uk-flex">
+    <div class="">
+      <%= image_tag "girl1.jpg", style: "border-radius: 50%; min-height: 80px; min-width: 80px; max-height: 80px; max-width: 80px" %>
+    </div>
+    <div class="uk-margin-left">
+      <span class="uk-text-lead">Sofía Rodríguez</span>
+      <!-- <div class="uk-flex">
+        <%#= inline_svg "icons/star.svg", style: "min-width: 20px; max-width: 20px; max-height: 20px" %>
+        <span class="">4.7</span>
+      </div> -->
+      <p class="uk-margin-remove-top uk-margin-remove-bottom">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+        incididunt.
+       </p>
+    </div>
+  </div>
+  <hr>
 
-<% @expenses_by_category.each do |category| %>
-  <h1><%= category.name %></h1>
-  <h1><%= category.total %></h1>
-<% end %>
+  <div class="uk-margin uk-margin-left uk-margin-right">
+    <div class="uk-flex uk-flex-row uk-margin-small-bottom">
+      <div class="uk-margin-small-right">
+        <%= inline_svg "icons/home.svg", style: "min-width: 20px; max-width: 20px" %>
+      </div>
+      <div class="uk-flex uk-flex-middle uk-flex-auto">
+        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom" value="50" max="100"></progress>
+      </div>
+      <span>20%</span>
+    </div>
+
+    <div class="uk-flex uk-margin-small-bottom">
+      <div class="uk-margin-small-right">
+        <%= inline_svg "icons/salad.svg", style: "min-width: 20px; max-width: 20px" %>
+      </div>
+      <div class="uk-flex uk-flex-middle uk-flex-auto">
+        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom" value="10" max="100"></progress>
+      </div>
+      <span>15%</span>
+    </div>
+
+    <div class="uk-flex uk-margin-small-bottom">
+      <div class="uk-margin-small-right">
+        <%= inline_svg "icons/travel.svg", style: "min-width: 20px; max-width: 20px" %>
+      </div>
+      <div class="uk-flex uk-flex-middle uk-flex-auto">
+        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-top uk-margin-remove-bottom" value="70" max="100"></progress>
+      </div>
+      <span>10%</span>
+    </div>
+
+    <div class="uk-flex uk-margin-small-bottom">
+      <div class="uk-margin-small-right">
+        <%= inline_svg "icons/dog.svg", style: "min-width: 20px; max-width: 20px" %>
+      </div>
+      <div class="uk-flex uk-flex-middle uk-flex-auto">
+        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-top uk-margin-remove-bottom" value="45" max="100"></progress>
+      </div>
+      <span>20%</span>
+    </div>
+
+    <div class="uk-flex">
+      <div class="uk-margin-small-right">
+        <%= inline_svg "icons/search.svg", style: "min-width: 20px; max-width: 20px" %>
+      </div>
+      <div class="uk-flex uk-flex-middle uk-flex-auto">
+        <progress class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-top uk-margin-remove-bottom" value="80" max="100"></progress>
+      </div>
+      <span>35%</span>
+    </div>
+  </div>
+
+  <div class="uk-flex">
+    <div class="uk-card uk-card-default uk-card-small">
+      <div class="uk-text-center uk-card-body">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. <code>.uk-text-left</code>
+      </div>
+    </div>
+
+    <div class="uk-card uk-card-default uk-card-small">
+      <div class="uk-text-center uk-card-body">
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr. <code>.uk-text-right</code>
+      </div>
+    </div>
+  </div>
+
+    <!-- <h3 class="uk-card-title">Default</h3>
+    <p>Lorem ipsum <a href="#">dolor</a> sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+</div>
+
+<ul class="uk-list uk-list-striped uk-margin-remove-top">
+    <li>List item 1</li>
+    <li>List item 2</li>
+    <li>List item 3</li>
+</ul>
