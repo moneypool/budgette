@@ -1,8 +1,11 @@
-<% content_for :title, "Invitar al Grupo" %>
+<% content_for :title, "Invitar Amigos" %>
 
-<p class="uk-text-center">
-  Comparte este link con las personas con las que te quieras comparar
-</p>
+<div class="uk-text-center uk-margin-top">
+  <%= image_tag 'share.svg', size: '80' %>
+  <p>
+    Invita a tus amigos para que se unan al reto.
+  </p>
+</div>
 
 <%= link_to "whatsapp://send/?text=Te reto a ahorrar más que yo! Estoy usando un app para ahorrar entra aquí para conocerla. #{CGI.escape(new_group_acceptance_url(@group))}", class: "uk-card uk-card-default uk-text-emphasis" do %>
   <%= image_tag 'whatsapp.png', size: '32', class: 'uk-margin-small-right' %> Invitar por WhatsApp

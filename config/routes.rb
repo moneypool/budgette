@@ -11,5 +11,11 @@ Rails.application.routes.draw do
     resource :invitation, only: [:show]
   end
 
+  authenticated :user do
+    root "users#show"
+  end
+
+  root to: "marketing#show"
+
   resources :api_callbacks, only: :new
 end

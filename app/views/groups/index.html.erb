@@ -1,7 +1,15 @@
-<% content_for :title, "Grupos" %>
+<% content_for :title, "Retos" %>
 
-<% @groups.each do |group| %>
-  <%= link_to group, class: 'uk-margin-top uk-card uk-card-default uk-card-body' do %>
-    <h3 class="uk-card-title"><%= group.name %></h3>
+<% if @groups.any? %>
+  <% @groups.each do |group| %>
+    <%= link_to group, class: 'uk-margin-top uk-card uk-card-default uk-card-body' do %>
+      <h3 class="uk-card-title"><%= group.name %></h3>
+    <% end %>
   <% end %>
+<% else %>
+  <div class="uk-placeholder uk-text-center uk-margin-top">
+    <%= image_tag 'groups.svg', size: '100' %>
+    <p>Reta a tus amigos a ver quién ahorra más durante la semana.</p>
+    <%= link_to 'Crear Reto', new_group_path, class: 'uk-button uk-button-primary' %>
+  </div>
 <% end %>
