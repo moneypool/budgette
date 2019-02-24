@@ -25,7 +25,7 @@ class GoalsController < ApplicationController
 
   def init_goal_list
     @goal_list = []
-    2.times do
+    5.times do
       @goal_list << Goal.new
     end
   end

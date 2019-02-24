@@ -1,15 +1,37 @@
 <%= form_tag user_goals_path do %>
-  <% @goal_list.each do |goal| %>
+  <% @goal_list.each_with_index do |goal, index| %>
     <%= fields_for 'goal_list[]', goal do |p| %>
-
-      <div class="field">
-        <%= p.label 'Category Name:' %>
-        <%= p.number_field :amount %>
+      <div class="uk-margin">
+        <%= inline_svg "icons/#{GoalsController::CATEGORIES[index].downcase}.svg", style: "min-width: 20px; max-width: 20px" %>
+        <%= p.label "#{GoalsController::CATEGORIES[index]}", class: 'uk-form-label' %>
+        <%= p.range_field :amount, :min=>0, :max=>100, :class=>"uk-range", :id=>"slider#{index}"%>
+        <span style="float:right" id="sliderspan<%=index%>">30%</span>
+        <script type="text/javascript">
+          $("#slider0").change(function () {
+             var newValue = document.getElementById("slider0").valueAsNumber;
+             document.getElementById("sliderspan0").innerHTML=newValue+'%';
+          });
+          $("#slider1").change(function () {
+             var newValue = document.getElementById("slider1").valueAsNumber;
+             document.getElementById("sliderspan1").innerHTML=newValue+'%';
+          });
+          $("#slider2").change(function () {
+             var newValue = document.getElementById("slider2").valueAsNumber;
+             document.getElementById("sliderspan2").innerHTML=newValue+'%';
+          });
+          $("#slider3").change(function () {
+             var newValue = document.getElementById("slider3").valueAsNumber;
+             document.getElementById("sliderspan3").innerHTML=newValue+'%';
+          });
+          $("#slider4").change(function () {
+             var newValue = document.getElementById("slider4").valueAsNumber;
+             document.getElementById("sliderspan4").innerHTML=newValue+'%';
+          });
+        </script>
       </div>
-
     <% end %>
   <% end %>
-  <div class="actions">
-    <%= submit_tag %>
+  <div class="uk-margin">
+    <%= submit_tag "Guardar Porcentajes", class: 'uk-button uk-button-primary uk-width-1-1' %>
   </div>
 <% end %>
