@@ -15,6 +15,10 @@
 
 <hr>
 
+<%= link_to new_group_path, class: 'fab' do %>
+  <%= image_tag 'add.svg' %>
+<% end %>
+
 <div class="uk-card uk-card-default uk-card-body">
   <h5 class="uk-card-title">Tu presupuesto</h5>
   <div class="uk-margin uk-margin-left uk-margin-right">
@@ -34,11 +38,6 @@
               aria-valuemax="<%= goal(category.name).amount %>">
             </div>
           </div>
-          <!-- <progress
-            class="uk-progress uk-progress-danger uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom"
-            value="<%#= category.total %>"
-            max="<%#= goal(category.name).amount %>">
-          </progress> -->
         </div>
         <div style="flex-basis: 18%;" class="uk-text-right uk-margin-small-left <%= user_over_limit?(category.total, goal(category.name).amount) %>">
           <%= progress_percentage(category.total, goal(category.name).amount) %>%
