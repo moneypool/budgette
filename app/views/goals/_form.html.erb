@@ -3,11 +3,7 @@
     <%= fields_for 'goal_list[]', goal do |p| %>
 
       <div class="field">
-        <%= p.label :category %><br>
-        <%= p.text_field :category %>
-      </div>
-      <div class="field">
-        <%= p.label :amount %><br>
+        <%= p.label 'Category Name:' %>
         <%= p.number_field :amount %>
       </div>
 
