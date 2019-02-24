@@ -1,45 +1,71 @@
 <p id="notice" style="margin: 0;"><%= notice %></p>
 
-<div class="uk-card-primary">
-    <div class="uk-card-header">
-      <div class="uk-grid-small uk-flex-middle" uk-grid>
-        <div class="uk-width-expand">
-          <h3 class="uk-card-title uk-margin-remove-bottom"><%= @group.name %></h3>
-          <p class="uk-text-meta uk-margin-remove-top"><%= @group.members.count %> participantes</p>
-        </div>
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m uk-margin-small-top">
+    <div class="uk-flex uk-flex-center uk-margin-small-top">
+      <%= inline_svg 'icons/group.svg', style: "min-width: 60px; max-width: 60px; max-height: 60px; max-height: 60px" %>
+    </div>
+    <div class="uk-flex uk-flex-column uk-flex-center uk-margin-small-top">
+      <div class="uk-flex uk-flex-center">
+        <h3 class="uk-card-title uk-margin-remove-bottom"><%= @group.name %></h3>
+      </div>
+      <div class="uk-flex uk-flex-column uk-flex-center uk-text-center">
+        <p class="uk-text-meta uk-margin-remove-top uk-margin-remove-bottom"><%= @group.members.count %> participantes</p>
       </div>
     </div>
-    <div class="uk-card-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing eli.</p>
-    </div>
-    <div class="uk-card-footer">
-      <small>Hace <%= time_ago_in_words(@group.created_at) %></small>
+    <hr>
+    <%= link_to group_invitation_path(@group), class: 'fab' do %>
+      <%= image_tag 'icons/gpadd.svg' %>
+    <% end %>
+    <div class="">
+        <div class="">
+          <p>Rankings:</p>
+            <% @rankings.each_with_index do |member, index| %>
+              <div class="">
+                <div class="">
+                  <span><%= index + 1 %>. <%= member.name %></span>
+                </div>
+                <div class="uk-flex uk-flex-row uk-margin-small-bottom">
+                  <div class="uk-margin-small-right">
+                    <%= inline_svg "icons/profile#{index}.svg", style: "min-width: 20px; max-width: 20px" %>
+                  </div>
+                  <div class="uk-flex uk-flex-middle uk-flex-auto">
+                    <div class="progress">
+                      <div
+                        class="progress-bar <%= user_over_limit?(member.total_expenses, member.total_goal) %>"
+                        role="progressbar"
+                        style="width: <%= progress_percentage(member.total_expenses, member.total_goal) %>%;"
+                        aria-valuenow="<%= member.total_expenses %>"
+                        aria-valuemin="0"
+                        aria-valuemax="<%= member.total_goal %>">
+                      </div>
+                    </div>
+
+
+                    <!-- <progress
+                      class="uk-progress uk-progress-danger uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom"
+                      value="<%#= member.progress.round(2) %>"
+                      max="<%#= 100 %>">
+                    </progress> -->
+                  </div>
+                  <div class="uk-margin-small-left">
+                    <span style="color: <%= member.progress >= 100 ? 'red' : 'green' %>"><%= member.progress.round(2)  %>%</span>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+        </div>
     </div>
 </div>
 
-<%= link_to '#',
-      class: "js-clipboard uk-card uk-card-default uk-text-emphasis",
-      data: { clipboard_text: new_group_acceptance_url(@group) } do %>
-  <%= image_tag 'link.png', size: '32', class: 'uk-margin-small-right' %> Copiar Link
-<% end %>
 
-<div class="uk-section uk-section-default">
-    <div class="uk-container uk-container-small">
-      <p>Rankings:</p>
-      <ol>
-        <% @rankings.each do |member| %>
-          <li><%= member.email %> - <span style="color: <%= member.progress >= 100 ? 'red' : 'green' %>"><%= member.progress.round(2)  %>%</span></li>
-        <% end %>
-      </ol>
-    </div>
-</div>
+
 
 <script type="text/javascript">
   var clipboard = new ClipboardJS('.js-clipboard');
 
   clipboard.on('success', function(e) {
     UIkit.notification({
-      message: 'El texto se copió correctamente',
+      message: 'La invitación se copió correctamente',
       status: 'success',
       pos: 'bottom-center',
       timeout: 4000
