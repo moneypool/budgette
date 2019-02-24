@@ -4,8 +4,8 @@
       <div class="uk-margin">
         <%= inline_svg "icons/#{GoalsController::CATEGORIES[index].downcase}.svg", style: "min-width: 20px; max-width: 20px" %>
         <%= p.label "#{GoalsController::CATEGORIES[index]}", class: 'uk-form-label' %>
-        <%= p.range_field :amount, :min=>0, :max=>100, :class=>"uk-range", :id=>"slider#{index}"%>
-        <span style="float:right" id="sliderspan<%=index%>">30%</span>
+        <%= p.range_field :amount, :value=>20,:min=>0, :max=>100, :class=>"uk-range", :id=>"slider#{index}"%>
+        <span style="float:right" id="sliderspan<%=index%>">20%</span>
         <script type="text/javascript">
           $("#slider0").change(function () {
              var newValue = document.getElementById("slider0").valueAsNumber;
