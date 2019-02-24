@@ -1,0 +1,15 @@
+<div id="offcanvas-slide" uk-offcanvas>
+  <div class="uk-offcanvas-bar">
+    <ul class="uk-nav uk-nav-scondary">
+      <li class="uk-nav-header">Empezar</li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'Empezar a ahorrar', new_group_path %></li>
+        <li><%= link_to 'Cerrar sesión', destroy_user_session_path, method: 'delete' %></li>
+      <% else %>
+        <li><%= link_to 'Regístrate', new_user_registration_path %></li>
+        <li><%= link_to 'Inicia Sesión', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<a href="#offcanvas-slide" style="margin: 25px 0 0 25px;" uk-toggle uk-navbar-toggle-icon href="#"></a>
