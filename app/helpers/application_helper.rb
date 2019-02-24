@@ -19,4 +19,8 @@ module ApplicationHelper
   def category_svg(name)
     CATEGORIES_SVGS[name]
   end
+
+  def user_over_limit?(reached_amount, total_amount)
+    "uk-text-danger" if reached_amount > total_amount
+  end
 end

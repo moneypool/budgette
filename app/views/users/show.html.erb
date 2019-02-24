@@ -3,7 +3,7 @@
 <div class="uk-card uk-card-default uk-card-body uk-margin-small-top">
   <div class="uk-flex">
     <div class="">
-      <%= image_tag "girl1.jpg", style: "border-radius: 50%; min-height: 80px; min-width: 80px; max-height: 80px; max-width: 80px" %>
+      <%= image_tag "avatar.svg", size: '80' %>
     </div>
     <div class="uk-margin-left">
       <div class="uk-text-lead"><%= @user.name %></div>
@@ -27,12 +27,14 @@
         </div>
         <div class="uk-flex uk-flex-middle uk-flex-auto">
           <progress
-            class="uk-progress uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom"
+            class="uk-progress uk-progress-danger uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom"
             value="<%= category.total %>"
-            max="<%= goal(category.name).amount %>"
+            max="<%= goal(category.name).amount %>">
           </progress>
         </div>
-        <span><%= progress_percentage(category.total, goal(category.name).amount)%>%</span>
+        <span class="<%= user_over_limit?(category.total, goal(category.name).amount) %>">
+          <%= progress_percentage(category.total, goal(category.name).amount) %>%
+        </span>
       </div>
     <% end %>
   </div>
@@ -41,11 +43,11 @@
       <div class="uk-flex uk-flex-between uk-text-center uk-card-body">
         <div class="">
           <h2 class="uk-margin-remove-bottom uk-text-success">$<%= @total_income %></h2>
-          <span>Income</span>
+          <span>Ingreso</span>
         </div>
         <div class="">
           <h2 class="uk-margin-remove-bottom uk-text-danger">$<%= @total_expense %></h2>
-          <span>Expenses</span>
+          <span>Gastos</span>
         </div>
       </div>
     </div>
@@ -59,7 +61,7 @@
         </div>
         <div class="uk-flex-auto uk-text-right <%= transaction.class.name == 'Income' ? 'uk-text-success' : 'uk-text-danger' %>">
           <%= transaction.class.name == 'Income' ? '+' : '-' %>
-          <%= transaction.amount%> MXN
+          <%= number_to_currency transaction.amount %>
         </div>
       </li>
     <% end %>
