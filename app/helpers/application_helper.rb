@@ -21,6 +21,10 @@ module ApplicationHelper
   end
 
   def user_over_limit?(reached_amount, total_amount)
-    "uk-text-danger" if reached_amount > total_amount
+    if reached_amount > total_amount
+      "uk-text-danger"
+    else
+      "uk-text-success"
+    end
   end
 end

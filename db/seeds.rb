@@ -28,11 +28,14 @@ User.create!(
   )
 end
 
+group = Group.create!(name: 'Amigochos')
+
 User.all.each do |user|
   BankAccount.create!(name: "Banregio", account_number: rand(10 ** 10), user: user)
   CATEGORIES.each do |category|
-    Goal.create!(category: category, amount: rand(1000..1500), user: user)
+    Goal.create!(category: category, amount: rand(1000..5000), user: user)
   end
+  Membership.create!(group: group, user: user)
 end
 
 BankAccount.all.each do |bank_account|
