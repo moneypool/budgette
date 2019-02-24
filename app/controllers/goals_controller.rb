@@ -41,11 +41,6 @@ class GoalsController < ApplicationController
   end
 
   def calculated_params(individual_params)
-    puts 'PARAMSSSS'
-    puts individual_params[:category]
-    puts individual_params[:category].to_i
-    puts CATEGORIES[individual_params[:category].to_i]
-    puts 'end params cateory'
     {
       user: current_user,
       category: CATEGORIES[individual_params[:category].to_i],
