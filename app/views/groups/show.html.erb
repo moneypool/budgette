@@ -1,6 +1,49 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" style="margin: 0;"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @group.name %>
-</p>
+<div class="uk-card-primary">
+    <div class="uk-card-header">
+      <div class="uk-grid-small uk-flex-middle" uk-grid>
+        <div class="uk-width-expand">
+          <h3 class="uk-card-title uk-margin-remove-bottom"><%= @group.name %></h3>
+          <p class="uk-text-meta uk-margin-remove-top"><%= @group.members.count %> participantes</p>
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing eli.</p>
+    </div>
+    <div class="uk-card-footer">
+      <small>Hace <%= time_ago_in_words(@group.created_at) %></small>
+    </div>
+</div>
+
+<%= link_to '#',
+      class: "js-clipboard uk-card uk-card-default uk-text-emphasis",
+      data: { clipboard_text: new_group_acceptance_url(@group) } do %>
+  <%= image_tag 'link.png', size: '32', class: 'uk-margin-small-right' %> Copiar Link
+<% end %>
+
+<div class="uk-section uk-section-default">
+    <div class="uk-container uk-container-small">
+      <p>Rankings:</p>
+      <ol>
+        <% @rankings.each do |member| %>
+          <li><%= member.email %> - <span style="color: <%= member.progress >= 100 ? 'red' : 'green' %>"><%= member.progress.round(2)  %>%</span></li>
+        <% end %>
+      </ol>
+    </div>
+</div>
+
+<script type="text/javascript">
+  var clipboard = new ClipboardJS('.js-clipboard');
+
+  clipboard.on('success', function(e) {
+    UIkit.notification({
+      message: 'El texto se copió correctamente',
+      status: 'success',
+      pos: 'bottom-center',
+      timeout: 4000
+    });
+    e.clearSelection();
+  });
+</script>

@@ -14,6 +14,10 @@ class Group < ApplicationRecord
     Membership.new(group: self, user: user).save!
   end
 
+  def rankings
+    members.sort_by(&:progress)
+  end
+
   private
 
   def generate_code
