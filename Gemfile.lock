@@ -91,6 +91,7 @@ GEM
     erubi (1.8.0)
     excon (0.62.0)
     execjs (2.7.0)
+    ffaker (2.10.0)
     ffi (1.10.0)
     formulaic (0.4.1)
       activesupport
@@ -257,6 +258,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   excon
+  ffaker
   formulaic
   friendly_id (~> 5.2.4)
   honeybadger

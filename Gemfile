@@ -8,6 +8,7 @@ end
 ruby "2.6.1"
 
 gem "devise"
+gem "ffaker"
 gem "autoprefixer-rails"
 gem "excon"
 gem "honeybadger"
