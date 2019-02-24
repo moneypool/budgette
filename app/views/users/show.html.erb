@@ -55,18 +55,20 @@
   </div>
 </div>
 
-<h3 class="uk-margin-small">Tus Movimientos</h3>
-<ul class="uk-list uk-list-divider">
-  <% @transactions.first(20).each do |transaction| %>
-    <li class="uk-flex uk-flex-between">
-      <div class="uk-flex-auto uk-flex uk-flex-column">
-        <span><%= transaction.description.first(10) %></span>
-        <span class="uk-text-meta"><%= transaction.transaction_date.to_s.first(19) %></span>
-      </div>
-      <div class="uk-flex-auto uk-text-right <%= transaction.class.name == 'Income' ? 'uk-text-success' : 'uk-text-danger' %>">
-        <%= transaction.class.name == 'Income' ? '+' : '-' %>
-        <%= number_to_currency transaction.amount %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<div class="uk-card uk-card-default uk-card-body">
+  <h3 class="uk-margin-small">Tus Movimientos</h3>
+  <ul class="uk-list uk-list-divider">
+    <% @transactions.first(20).each do |transaction| %>
+      <li class="uk-flex uk-flex-between">
+        <div class="uk-flex-auto uk-flex uk-flex-column">
+          <span><%= transaction.description.first(10) %></span>
+          <span class="uk-text-meta"><%= transaction.transaction_date.to_s.first(19) %></span>
+        </div>
+        <div class="uk-flex-auto uk-text-right <%= transaction.class.name == 'Income' ? 'uk-text-success' : 'uk-text-danger' %>">
+          <%= transaction.class.name == 'Income' ? '+' : '-' %>
+          <%= number_to_currency transaction.amount %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
