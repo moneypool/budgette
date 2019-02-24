@@ -10,4 +10,10 @@ Rails.application.routes.draw do
     resources :acceptances, only: [:new]
     resource :invitation, only: [:show]
   end
+
+  authenticated :user do
+    root "users#show"
+  end
+
+  root to: "marketing#show"
 end
