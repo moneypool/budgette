@@ -14,7 +14,7 @@
     </div>
     <hr>
     <%= link_to group_invitation_path(@group), class: 'fab' do %>
-      <%= image_tag 'icons/gpadd.svg' %>
+      <%= image_tag 'group-add.svg' %>
     <% end %>
     <div class="">
         <div class="">
@@ -39,13 +39,6 @@
                         aria-valuemax="<%= member.total_goal %>">
                       </div>
                     </div>
-
-
-                    <!-- <progress
-                      class="uk-progress uk-progress-danger uk-margin-small-right uk-margin-remove-top uk-margin-remove-bottom"
-                      value="<%#= member.progress.round(2) %>"
-                      max="<%#= 100 %>">
-                    </progress> -->
                   </div>
                   <div class="uk-margin-small-left">
                     <span style="color: <%= member.progress >= 100 ? 'red' : 'green' %>"><%= member.progress.round(2)  %>%</span>
