@@ -1,0 +1,7 @@
+<% content_for :title, "Grupos" %>
+
+<% @groups.each do |group| %>
+  <%= link_to group, class: 'uk-margin-top uk-card uk-card-default uk-card-body' do %>
+    <h3 class="uk-card-title"><%= group.name %></h3>
+  <% end %>
+<% end %>

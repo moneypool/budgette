@@ -2,7 +2,17 @@
   <div class="main-navigation">
     <header class="main-navigation-container">
       <div class="main-navigation-title">
+        <div class="main-navigation-icon main-navigation-icon-left">
+          <%= link_to groups_path do %>
+            <%= image_tag 'list.svg' %>
+          <% end %>
+        </div>
         <h1 class="navigation-title"><%= yield :title %></h1>
+        <div class="main-navigation-icon main-navigation-icon-right">
+          <%= link_to user_path(current_user) do %>
+            <%= image_tag 'profile.svg' %>
+          <% end %>
+        </div>
       </div>
     </header>
   </div>

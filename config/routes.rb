@@ -3,10 +3,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :bank_accounts, only: [:new, :create]
-    resources :goals, only: [:new, :show, :create, :update]
+    resources :goals, only: [:new, :create]
   end
 
-  resources :groups, only: [:show, :new, :create] do
+  resources :groups, only: [:index, :show, :new, :create] do
     resources :acceptances, only: [:new]
     resource :invitation, only: [:show]
   end
