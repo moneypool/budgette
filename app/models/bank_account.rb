@@ -1,6 +1,6 @@
 class BankAccount < ApplicationRecord
   validates :name, presence: :true
-  validates :account_number, presence: :true, numericality: { only_integer: true }, length: { is: 10 }
+  validates :account_number, presence: :true, numericality: { only_integer: true }
 
   belongs_to :user
   has_many :expenses
