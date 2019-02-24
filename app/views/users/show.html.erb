@@ -6,7 +6,7 @@
       <%= image_tag "girl1.jpg", style: "border-radius: 50%; min-height: 80px; min-width: 80px; max-height: 80px; max-width: 80px" %>
     </div>
     <div class="uk-margin-left">
-      <span class="uk-text-lead">Sofía Rodríguez</span>
+      <div class="uk-text-lead"><%= @user.name %></div>
       <!-- <div class="uk-flex">
         <%#= inline_svg "icons/star.svg", style: "min-width: 20px; max-width: 20px; max-height: 20px" %>
         <span class="">4.7</span>
@@ -40,37 +40,28 @@
     <div class="uk-card uk-card-default uk-card-small">
       <div class="uk-flex uk-flex-between uk-text-center uk-card-body">
         <div class="">
-          <h1 class="uk-margin-remove-bottom uk-text-success">$<%= @total_income %></h1>
+          <h2 class="uk-margin-remove-bottom uk-text-success">$<%= @total_income %></h2>
           <span>Income</span>
         </div>
         <div class="">
-          <h1 class="uk-margin-remove-bottom uk-text-danger">$<%= @total_expense %></h1>
+          <h2 class="uk-margin-remove-bottom uk-text-danger">$<%= @total_expense %></h2>
           <span>Expenses</span>
         </div>
       </div>
     </div>
 
   <ul class="uk-list uk-list-divider">
+    <% @transactions.first(20).each do |transaction| %>
       <li class="uk-flex uk-flex-between">
         <div class="uk-flex-auto uk-flex uk-flex-column">
-          <span>Transf web/app</span>
-          <span class="uk-text-small">Jue 21 feb, 08:06 pm</span>
+          <span><%= transaction.description.first(10) %></span>
+          <span class="uk-text-small"><%= transaction.transaction_date.to_s.first(19) %></span>
         </div>
-        <div class="uk-flex-auto uk-text-right uk-text-danger">-78.44 MXN</div>
-      </li>
-      <li class="uk-flex uk-flex-between">
-        <div class="uk-flex-auto uk-flex uk-flex-column">
-          <span>Deposit</span>
-          <span class="uk-text-small">Lun 13 feb, 01:15 pm</span>
+        <div class="uk-flex-auto uk-text-right <%= transaction.class.name == 'Income' ? 'uk-text-success' : 'uk-text-danger' %>">
+          <%= transaction.class.name == 'Income' ? '+' : '-' %>
+          <%= transaction.amount%> MXN
         </div>
-        <div class="uk-flex-auto uk-text-right uk-text-success">+300.00 MXN</div>
       </li>
-      <li class="uk-flex uk-flex-between">
-        <div class="uk-flex-auto uk-flex uk-flex-column">
-          <span>Cinépolis</span>
-          <span class="uk-text-small">Dom 03 feb, 10:30 pm</span>
-        </div>
-        <div class="uk-flex-auto uk-text-right uk-text-danger">-230.00 MXN</div>
-      </li>
+    <% end %>
   </ul>
 </div>

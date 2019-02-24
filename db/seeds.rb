@@ -19,7 +19,7 @@ TRANSACTION_NUMER = 1
 
 5.times do |time|
   email = "test#{time}@mail.com"
-  name = FFaker::Name.first_name
+  name = "#{FFaker::Name.first_name} #{FFaker::Name.last_name}"
   password = '12341234'
   User.create(email: email, name: name, password: password, password_confirmation: password)
 end
@@ -54,3 +54,31 @@ BankAccount.find_each do |ba|
     TRANSACTION_NUMER += 1
   end
 end
+
+goals = Goal.create([
+  {
+    category: 'Entertainment',
+    amount: 5500,
+    user_id: 1
+  },
+  {
+    category: 'Food',
+    amount: 9000,
+    user_id: 1
+  },
+  {
+    category: 'School',
+    amount: 4500,
+    user_id: 1
+  },
+  {
+    category: 'Pets',
+    amount: 2000,
+    user_id: 1
+  },
+  {
+    category: 'Others',
+    amount: 5000,
+    user_id: 1
+  }
+])
