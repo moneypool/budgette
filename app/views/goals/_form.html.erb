@@ -1,6 +1,19 @@
-<%= form_for @goal, url: user_goals_path do |f| %>
-  <%= f.text_field :category, required: true, placeholder: 'Category' %><br />
-  <%= f.number_field :amount, required: true, placeholder: '% to save' %><br />
+<%= form_tag user_goals_path do %>
+  <% @goal_list.each do |goal| %>
+    <%= fields_for 'goal_list[]', goal do |p| %>
 
-   <%= f.submit 'Save' %>
+      <div class="field">
+        <%= p.label :category %><br>
+        <%= p.text_field :category %>
+      </div>
+      <div class="field">
+        <%= p.label :amount %><br>
+        <%= p.number_field :amount %>
+      </div>
+
+    <% end %>
+  <% end %>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
 <% end %>
