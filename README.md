@@ -15,8 +15,7 @@ with your friends to see who is the best Budgetter.
 ## Instructions
 
 To try out Budgette, just head over to *https://budgette-production.herokuapp.com/* (preferrebly on mobile)
-and follow signup instructions. When prompted for your Banregio credentials, you may use these test ones:
+and follow signin using this test account:
 
-**User**: sandboxuser2002@sandboxbanregio.com
-
-**Password**: PPZ97SIR
+**User**: test@email.com
+**Password**: 12341234
